@@ -1,0 +1,11 @@
+---
+- name: Copy deployment script file to remote machine
+  copy:
+    src: alert-deploy-java-manager.sh
+    dest: /var/tmp/alert-deploy-java-manager.sh
+    mode: 0755
+
+- name: Execute shell script
+  shell: sh /var/tmp/alert-deploy-java-manager.sh {{VERSION}} {{PLATFORM}} {{MANAGER}} > /tmp/alert-deploy-java-manager.log
+  args:
+    chdir: /var/tmp/
