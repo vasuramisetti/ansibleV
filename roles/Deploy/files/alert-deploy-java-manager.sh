@@ -26,10 +26,10 @@ rm -rf ./deploy
 
 
 cd scripts/java-properties
-./deploy-properties.sh tfccdply $PLATFORM > 
+./deploy-properties.sh tfccdply $PLATFORM > /tmp/vasu/t1.log 
 cd ../..
 echo "Stopping Alarming"
-./scripts/alarmd-control.sh tfccdply $PLATFORM SHUTDOWN  
+./scripts/alarmd-control.sh tfccdply $PLATFORM SHUTDOWN  > /tmp/vasu/t2.log
 
 
 echo "Deploying Java Managers"
@@ -38,12 +38,12 @@ echo "Deploying Java Managers"
 ls -lrt
 ls -lrt scripts/
 ls scripts/mgr-deployment-art.sh
-./scripts/mgr-deployment-art.sh -n -l $PLATFORM -u tfccdply -s 2 -p $MANAGER -m 2 -v ${VERSION} -r  
+./scripts/mgr-deployment-art.sh -n -l $PLATFORM -u tfccdply -s 2 -p $MANAGER -m 2 -v ${VERSION} -r  > /tmp/vasu/t3.log
 
 
 echo "Sleeping for 5 seconds, then checking on managers"
 sleep 15
-./scripts/mgr-service-setup.sh --user tfccdply --location $PLATFORM --mode QUERY_CHANGING  
+./scripts/mgr-service-setup.sh --user tfccdply --location $PLATFORM --mode QUERY_CHANGING  > /tmp/vasu/t4.log
 
 echo "Clearing and Starting Alarming Back Up"
-./scripts/alarmd-control.sh tfccdply BETA STARTUP 
+./scripts/alarmd-control.sh tfccdply BETA STARTUP  > /tmp/vasu/t5.log
