@@ -3,7 +3,7 @@
   copy:
     src: alert-deploy-java-manager.sh
     dest: /var/tmp/alert-deploy-java-manager.sh
-    mode: 0755
+    mode: 0777
 
 - name: Execute shell script
   shell: sh /var/tmp/alert-deploy-java-manager.sh {{VERSION}} {{PLATFORM}} {{MANAGER}} > /tmp/alert-deploy-java-manager.log
