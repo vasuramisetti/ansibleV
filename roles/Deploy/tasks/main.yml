@@ -6,6 +6,6 @@
     mode: 0777
 
 - name: Execute shell script
-  shell: sh /var/tmp/alert-deploy-java-manager.sh {{VERSION}} {{PLATFORM}} {{MANAGER}} > /tmp/alert-deploy-java-manager.log
+  shell: sh /var/tmp/alert-deploy-java-manager.sh {{VERSION}} {{PLATFORM}} {{MANAGER}} > /var/tmp/alert-deploy-java-manager.log
   args:
     chdir: /var/tmp/
