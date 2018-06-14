@@ -1,3 +1,4 @@
+
 ---
 - name: Copy deployment script file to remote machine
   copy:
@@ -7,3 +8,11 @@
 
 - name: Execute shell script
   shell: sh alert-deploy-java-manager.sh  > /var/tmp/alert-deploy-java-manager.log
+  
+- name: Display vault passwd
+  shell: echo "Vault passwd is: {{ TEST_PASSWORD }}
+  register: results
+  
+- debug:
+    var: result
+    verbosity: 2
